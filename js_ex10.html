@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Object</h1>
+    <h2>Create</h2>
+    <script>
+        var coworkers = {
+            "programmer":"egoing",
+            "designer":"leezche"
+        };
+        document.write("programmer : " +coworkers.programmer+"<br>");
+        document.write("designer  : " +coworkers.designer+"<br>");
+        coworkers.bookkeeper = "duru";
+        document.write("bookkeeper : "+coworkers.bookkeeper+"<br>");
+        coworkers["data scientist"] = "taeho";
+        document.write("data scientist : "+coworkers["data scientist"]+"<br>");
+    </script>
+    <h2>Iterate</h2>
+    <h2>Property & Method</h2>
+    <script>
+        coworkers.showAll = function(){
+            for(var key in this){
+                document.write(this[key]+'<br>');
+            }
+        }
+        coworkers.showAll();
+    </script>
+</body>
+</html>
