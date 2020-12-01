@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+  <title>WEB1 - WEB</title>
+  <meta charset="utf-8">
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script></script> -->
+  <script src="colors.js"> </script>
+</head>
+<body>
+  <h1><a href="index.html">WEB</a></h1>
+  <input type="button" value="night" onclick="
+    nightDayHandler(this);
+  ">  
+  <div id="grid">
+    <ol id="nav">
+
+    </ol>
+    <article>
+ 
+    </article>
+  </div>
+  <script>
+    function fetchPage(name){
+      fetch(name).then(function(reponse){
+          reponse.text().then(function(text){
+            console.log(text);
+            document.querySelector('article').innerHTML = text;
+          })
+        })   
+    }
+
+    if(location.hash){
+      fetchPage(location.hash.substr(2));
+    }else{
+      fetchPage('Welcome')
+    }
+    fetch('list').then(function(reponse){
+      reponse.text().then(function(text){
+        var items = text.split(',');
+        var i =0;
+        var tags = '';
+
+        while(i<items.length){
+          var item = items[i];
+          item.trim();
+          var tag = '<li><a href="#!'+item+'" onclick="fetchPage(\''+item+'\')">'+item+'</li>';
+          tags = tags+tag;
+          i=i+1;
+        }
+        document.querySelector('#nav').innerHTML = tags;
+      })
+    })
+  </script>
+</body>
+</html>
